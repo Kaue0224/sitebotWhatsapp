@@ -1,0 +1,50 @@
+<%- include('partials/head') %>
+<body>
+<%- include('partials/navbar') %>
+
+<div class="container py-5 text-white">
+  <h1 class="display-5 fw-bold mb-3">Venda Bots de WhatsApp com IA</h1>
+  
+  <p class="lead mt-3 mb-4">
+    Automatize atendimento, vendas e suporte com planos prontos. Simples, poderoso e acessível.
+  </p>
+
+  <div class="row g-4 mt-5">
+    <div class="col-md-4">
+      <div class="bot-card">
+        <h3>Atendimento</h3>
+        <p>Responda clientes 24/7 com IA inteligente.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bot-card">
+        <h3>Vendas</h3>
+        <p>Aumente conversões com chatbot de vendas.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bot-card">
+        <h3>Suporte</h3>
+        <p>Resolvа problemas de forma rápida e eficiente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <% if (usuarioId) { %>
+      <a href="/meus-bots" class="btn btn-outline-success btn-lg">
+        Ver Meus Bots
+      </a>
+    <% } else { %>
+      <a href="/comprarbots" class="btn btn-outline-success btn-lg">
+        Ver Planos
+      </a>
+      <a href="/registro" class="btn btn-outline-info btn-lg ms-2">
+        Começar Agora
+      </a>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+</body>

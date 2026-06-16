@@ -1,0 +1,68 @@
+<%- include('partials/head') %>
+<body>
+<%- include('partials/navbar') %>
+
+<div class="container py-5">
+  <h1 class="display-5 fw-bold mb-5 text-white">Nossos Planos</h1>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="bot-card" style="position:relative;">
+        <h3 class="gradient-text mb-3">Bot Básico</h3>
+        <h4 class="mb-3">R$ 99<span style="font-size: 0.6em;">/mês</span></h4>
+        <ul class="list-unstyled mb-4">
+          <li>Até 1000 mensagens</li>
+          <li>Respostas automáticas</li>
+          <li>1 webhook</li>
+          <li>Suporte por email</li><br>
+        </ul>
+        <% if (locals.usuarioId) { %>
+          <a href="https://wa.me/5585987654321?text=Ol%C3%A1!%20Quero%20adquirir%20o%20Bot%20B%C3%A1sico" target="_blank" class="btn btn-primary-custom w-100" style="position:relative;z-index:10;">Adquirir no WhatsApp</a>
+        <% } else { %>
+          <a href="/login" class="btn btn-primary-custom w-100" style="position:relative;z-index:10;">Fazer Login</a>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="bot-card" style="position:relative;">
+        <h3 class="gradient-text mb-3">Bot Profissional</h3>
+        <h4 class="mb-3">R$ 299<span style="font-size: 0.6em;">/mês</span></h4>
+        <ul class="list-unstyled mb-4">
+          <li>Até 10000 mensagens</li>
+          <li>IA avançada</li>
+          <li>5 webhooks</li>
+          <li>Suporte prioritário</li>
+          <li>Relatórios detalhados</li>
+        </ul>
+        <% if (locals.usuarioId) { %>
+          <a href="https://wa.me/5585987654321?text=Ol%C3%A1!%20Quero%20adquirir%20o%20Bot%20Profissional" target="_blank" class="btn btn-primary-custom w-100" style="position:relative;z-index:10;">Adquirir no WhatsApp</a>
+        <% } else { %>
+          <a href="/login" class="btn btn-primary-custom w-100" style="position:relative;z-index:10;">Fazer Login</a>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="bot-card" style="position:relative;">
+        <h3 class="gradient-text mb-3">Bot Enterprise</h3>
+        <h4 class="mb-3">Sob Consulta</h4>
+        <ul class="list-unstyled mb-4">
+          <li>Mensagens ilimitadas</li>
+          <li>IA personalizada</li>
+          <li>Webhooks ilimitados</li>
+          <li>Suporte 24/7 dedicado</li>
+          <li>Treinamento customizado</li>
+        </ul>
+        <% if (locals.usuarioId) { %>
+          <a href="https://wa.me/5585987654321?text=Ol%C3%A1!%20Quero%20adquirir%20o%20Bot%20Enterprise" target="_blank" class="btn btn-primary-custom w-100" style="position:relative;z-index:10;">Saiba Mais no WhatsApp</a>
+        <% } else { %>
+          <a href="/login" class="btn btn-primary-custom w-100" style="position:relative;z-index:10;">Fazer Login</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+</body>

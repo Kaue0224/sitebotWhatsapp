@@ -1,0 +1,64 @@
+<%- include('partials/head') %>
+<body>
+<%- include('partials/navbar') %>
+
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h1 class="display-5 fw-bold text-white mb-0">Painel Admin — Pedidos</h1>
+    <a href="/admin/logout" class="btn btn-outline-light btn-sm">Sair do Admin</a>
+  </div>
+
+  <% if (pedidos.length === 0) { %>
+    <p class="text-white-50">Nenhum pedido ainda.</p>
+  <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-dark table-striped table-hover align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Usuário</th>
+            <th>Email</th>
+            <th>Plano</th>
+            <th>Status</th>
+            <th>Data</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% pedidos.forEach(function(p) { %>
+            <tr>
+              <td><%= p.id %></td>
+              <td><%= p.User ? p.User.nome : '—' %></td>
+              <td><%= p.User ? p.User.email : '—' %></td>
+              <td><span class="badge bg-info text-dark"><%= p.plano %></span></td>
+              <td>
+                <% if (p.status === 'confirmado') { %>
+                  <span class="badge bg-success">confirmado</span>
+                <% } else if (p.status === 'cancelado') { %>
+                  <span class="badge bg-danger">cancelado</span>
+                <% } else { %>
+                  <span class="badge bg-warning text-dark">pendente</span>
+                <% } %>
+              </td>
+              <td style="font-size:0.85em;"><%= new Date(p.dataCriacao).toLocaleString('pt-BR') %></td>
+              <td>
+                <form method="POST" action="/admin/pedidos/status" class="d-flex gap-1">
+                  <input type="hidden" name="id" value="<%= p.id %>">
+                  <select name="status" class="form-select form-select-sm" style="width:auto;">
+                    <option value="pendente"     <%= p.status==='pendente'     ? 'selected':'' %>>Pendente</option>
+                    <option value="confirmado"   <%= p.status==='confirmado'   ? 'selected':'' %>>Confirmado</option>
+                    <option value="cancelado"    <%= p.status==='cancelado'    ? 'selected':'' %>>Cancelado</option>
+                  </select>
+                  <button type="submit" class="btn btn-primary-custom btn-sm">Salvar</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>
+</body>

@@ -1,0 +1,144 @@
+
+<%- include('partials/head') %>
+<body>
+<%- include('partials/navbar') %>
+
+<div class="container py-5">
+  <div class="auth-card">
+    <h2 class="mb-4 text-center">Criar Conta</h2>
+
+    <% if (error) { %>
+      <div class="alert alert-danger d-flex align-items-center gap-2" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+        </svg>
+        <%= error %>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/registro" novalidate>
+
+      <div class="mb-3">
+        <label class="form-label" for="nome">Nome Completo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          name="nome"
+          value="<%= (locals.campos && locals.campos.nome) ? locals.campos.nome : '' %>"
+          autocomplete="name"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          value="<%= (locals.campos && locals.campos.email) ? locals.campos.email : '' %>"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="senha">Senha</label>
+        <div class="input-group">
+          <input
+            type="password"
+            class="form-control"
+            id="senha"
+            name="senha"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          >
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            onclick="toggleSenha('senha', this)"
+            tabindex="-1"
+            aria-label="Mostrar/ocultar senha"
+          >
+            👁
+          </button>
+        </div>
+        <div class="form-text">Mínimo de 8 caracteres.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="senhaConfirm">Confirmar Senha</label>
+        <div class="input-group">
+          <input
+            type="password"
+            class="form-control"
+            id="senhaConfirm"
+            name="senhaConfirm"
+            autocomplete="new-password"
+            required
+          >
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            onclick="toggleSenha('senhaConfirm', this)"
+            tabindex="-1"
+            aria-label="Mostrar/ocultar confirmação de senha"
+          >
+            👁
+          </button>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary-custom w-100"
+      >
+        Criar Conta
+      </button>
+
+    </form>
+
+    <p class="text-center mt-3">
+      Já possui conta?
+      <a href="/login">Entrar</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  function toggleSenha(id, btn) {
+    const input = document.getElementById(id);
+    if (input.type === 'password') {
+      input.type = 'text';
+      btn.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      btn.textContent = '👁';
+    }
+  }
+
+  // Validação client-side: confirma se as senhas batem antes de enviar
+  document.querySelector('form').addEventListener('submit', function (e) {
+    const senha = document.getElementById('senha').value;
+    const confirma = document.getElementById('senhaConfirm').value;
+
+    if (senha !== confirma) {
+      e.preventDefault();
+      const alerta = document.createElement('div');
+      alerta.className = 'alert alert-danger mt-3';
+      alerta.textContent = 'As senhas não coincidem.';
+
+      const existente = document.querySelector('.alert');
+      if (existente) existente.remove();
+
+      this.prepend(alerta);
+    }
+  });
+</script>
+
+<%- include('partials/footer') %>
+</body>

@@ -1,0 +1,28 @@
+<%- include('partials/head') %>
+<body>
+<%- include('partials/navbar') %>
+
+<div class="container py-5">
+  <div class="auth-card">
+    <h2 class="mb-4 text-center">Admin</h2>
+
+    <% if (locals.error) { %>
+      <div class="alert alert-danger" role="alert"><%= locals.error %></div>
+    <% } %>
+
+    <form method="POST" action="/admin" novalidate>
+      <div class="mb-3">
+        <label class="form-label" for="usuario">Usuário</label>
+        <input type="text" class="form-control" id="usuario" name="usuario" required autocomplete="off">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="senha">Senha</label>
+        <input type="password" class="form-control" id="senha" name="senha" required autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-primary-custom w-100">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+</body>
