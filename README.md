@@ -2,7 +2,7 @@
 
 Sistema web para venda e gerenciamento de bots de WhatsApp com IA. A plataforma permite que usuários se cadastrem, escolham um plano de bot e acompanhem seus pedidos, enquanto administradores gerenciam as solicitações através de um painel próprio.
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 - **Cadastro e login de usuários** com senha criptografada (bcrypt)
 - **Página institucional** apresentando o serviço e como ele funciona
@@ -11,7 +11,7 @@ Sistema web para venda e gerenciamento de bots de WhatsApp com IA. A plataforma 
 - **Painel administrativo** separado, para visualizar todos os pedidos e atualizar seus status (pendente, confirmado, cancelado)
 - **Persistência em banco de dados SQLite**, sem necessidade de configurar um servidor de banco externo
 
-## 🛠️ Tecnologias
+##  Tecnologias
 
 - [Node.js](https://nodejs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -22,7 +22,7 @@ Sistema web para venda e gerenciamento de bots de WhatsApp com IA. A plataforma 
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs) — hash de senhas
 - [express-session](https://www.npmjs.com/package/express-session) — sessão de login
 
-## 📁 Estrutura do projeto
+##  Estrutura do projeto
 
 ```
 sitebotWhatsapp/
@@ -49,12 +49,12 @@ sitebotWhatsapp/
 └── tsconfig.json
 ```
 
-## ✅ Pré-requisitos
+##  Pré-requisitos
 
 - [Node.js](https://nodejs.org/) instalado (recomendado v18 ou superior)
 - npm (já vem junto com o Node.js)
 
-## 🚀 Como executar
+##  Como executar
 
 Clone o repositório:
 
@@ -87,9 +87,9 @@ A aplicação estará disponível em:
 http://localhost:3000
 ```
 
-> 💡 Durante o desenvolvimento, você também pode usar `npm run dev`, que compila e inicia o servidor em sequência.
+>  Durante o desenvolvimento, você também pode usar `npm run dev`, que compila e inicia o servidor em sequência.
 
-## 🔑 Rotas principais
+##  Rotas principais
 
 | Rota | Método | Descrição |
 |---|---|---|
@@ -106,7 +106,7 @@ http://localhost:3000
 | `/admin/pedidos/status` | POST | Atualiza o status de um pedido (admin) |
 | `/admin/logout` | GET | Encerra a sessão do admin |
 
-## 👤 Acesso administrativo
+##  Acesso administrativo
 
 O painel admin usa um usuário e senha fixos, definidos diretamente no código (`src/controllers/pageController.ts`):
 
@@ -115,7 +115,7 @@ Usuário: root
 Senha: root
 ```
 
-## ⚠️ Antes de colocar em produção
+##  Antes de colocar em produção
 
 Este projeto está configurado para uso local/demonstração. Antes de publicar em um ambiente real, é recomendado:
 
@@ -124,6 +124,4 @@ Este projeto está configurado para uso local/demonstração. Antes de publicar 
 - Ativar `cookie.secure: true` na sessão ao rodar sob HTTPS
 - Considerar migrar de SQLite para um banco mais robusto (PostgreSQL/MySQL) caso o volume de usuários cresça
 
-## 📄 Licença
 
-Defina a licença de sua preferência para este projeto.
